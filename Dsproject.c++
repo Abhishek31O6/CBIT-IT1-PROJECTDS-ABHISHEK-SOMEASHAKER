@@ -37,7 +37,7 @@ public:
         int floor;
         cout << "Enter external request floors (separate floors with space): ";
         while (cin >> floor) {
-            if (floor == -1) break;  // Stop if user enters -1
+            if (floor == -1) break;  
             if (floor >= 0 && floor <= max_floor) {
                 external_requests.push(floor);
             }
@@ -46,7 +46,7 @@ public:
             }
 
             char ch = cin.get();
-            if (ch == '\n') break;  // Stop if Enter is pressed
+            if (ch == '\n') break;  
         }
     }
 
@@ -83,3 +83,35 @@ public:
         cout << "No pending requests. Elevator stopped at floor " << curr_floor << endl;
     }
 };
+
+int main() {
+    int floors;
+    cout << "Enter number of floors: ";
+    cin >> floors;
+
+    Elevator e(floors);
+
+    int choice;
+    while (true) {
+        cout << "\n1. Add External Request" << endl;
+        cout << "2. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            e.External_request();
+            e.processRequests();
+        }
+        else if (choice == 2) {
+            cout << "Exiting..." << endl;
+            break;
+        }
+        else {
+            cout << "Invalid choice" << endl;
+        }
+    }
+
+    return 0;
+}
+
+
